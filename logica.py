@@ -1,0 +1,104 @@
+import datetime
+
+def coletar_dados_serie(numero_serie):
+    """Pede ao usuário o peso e as repetições para uma série específica."""
+    print(f"\n   --- Série {numero_serie} ---")
+    
+    # Valida o Peso
+    while True:
+        try:
+            peso = float(input("   Digite o PESO (em kg): "))
+            if peso < 0:
+                print("O peso não pode ser negativo. Tente novamente.")
+                continue
+            break
+        except ValueError:
+            print("Entrada inválida. Por favor, digite um número para o peso.")
+
+    while True:
+        try:
+            repeticoes = int(input("   Digite as REPETIÇÕES: "))
+            if repeticoes < 1:
+                print("As repetições devem ser pelo menos 1. Tente novamente.")
+                continue
+            break
+        except ValueError:
+            print("Entrada inválida. Por favor, digite um número inteiro para as repetições.")
+            
+    return {"peso": peso, "repeticoes": repeticoes}
+
+
+#Pede o nome do exercício e o número de séries, e coleta os dados de cada série."""
+def coletar_dados_exercicio():
+    
+    nome_exercicio = input("\nQual EXERCÍCIO: ").strip().title()
+    
+    while True:
+        try:
+            num_series = int(input(f"Quantas SÉRIES de {nome_exercicio} você vai fazer: "))
+            if num_series <= 0:
+                print("O número de séries deve ser maior que zero. Tente novamente.")
+                continue
+            break
+        except ValueError:
+            print("Entrada inválida. Por favor, digite um número inteiro.")
+
+    series_coletadas = []
+    
+    for i in range(1, num_series + 1):
+        dados_serie = coletar_dados_serie(i)
+        series_coletadas.append(dados_serie)
+        
+    return {
+        "exercicio": nome_exercicio,
+        "series": series_coletadas
+    }
+
+#Formata os dados do treino e salva em um arquivo TXT.
+def salvar_treino(nome_treino, treino_data):
+    
+    data_hora = datetime.datetime.now().strftime("|%d-%m-%y | %H:%M:%S|")
+    nome_arquivo = "caderno_de_treino/historico_treino.txt"
+    
+    conteudo_arquivo = f"==== {nome_treino.upper()} REGISTRADO em {data_hora} ====\n"
+    
+    for exercicio_info in treino_data:
+        conteudo_arquivo += f"\n- EXERCÍCIO: {exercicio_info['exercicio']} ({len(exercicio_info['series'])} Séries)\n"
+        
+        for i, serie in enumerate(exercicio_info['series']):
+            peso = serie['peso']
+            reps = serie['repeticoes']
+            conteudo_arquivo += f"  Série {i + 1}: {peso:.1f} kg x {reps} repetições\n"
+            
+    conteudo_arquivo += "\n" + ("=" * 40) + "\n"
+    
+    with open(nome_arquivo, 'a', encoding='utf-8') as arquivo:
+        arquivo.write(conteudo_arquivo)
+        
+    print(f"\n>>> ✅ Histórico do treino salvo em '{nome_arquivo}'! <<<")
+
+def iniciar_caderno_treino():
+    """Função principal que gerencia o fluxo do treino."""
+    print("--- 🏋️‍♂️ CADERNO DE TREINO VIRTUAL INICIADO 🏋️‍♂️ ---")
+    
+    nome_treino = input("Qual Grupo muscular você vai treino: ").strip().title()
+    
+    treino_completo = []
+    
+    while True:
+        
+        dados_exercicio = coletar_dados_exercicio()
+        treino_completo.append(dados_exercicio)
+        
+        continuar = input("\nDeseja adicionar outro exercício? (s/n): ").strip().lower()
+        
+        if continuar != 's':
+            break
+
+    if treino_completo:
+        salvar_treino(nome_treino, treino_completo)
+    else:
+        print("Nenhum exercício registrado. Treino encerrado.")
+
+if __name__ == "__main__":
+    iniciar_caderno_treino()
