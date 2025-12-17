@@ -1,17 +1,54 @@
-==== PEITO REGISTRADO em |15-12-25 | 17:13:57| ====
+==== PEITO E TRICEPS REGISTRADO em |15-12-25 | 21:58:57| ====
 
-- EXERCÍCIO: Supino Reto (3 Séries)
-  Série 1: 24.0 kg x 10 repetições
-  Série 2: 24.0 kg x 10 repetições
-  Série 3: 24.0 kg x 10 repetições
+- EXERCÍCIO: Supino Reto (4 Séries)
+   Série 1: 23.0 kg x 13 repetições
+   Série 2: 24.0 kg x 10 repetições
+   Série 3: 24.0 kg x 10 repetições
+   Série 4: 26.0 kg x 8 repetições
+
+- EXERCÍCIO: Supino Enclinado (4 Séries)
+   Série 1: 26.0 kg x 10 repetições
+   Série 2: 26.0 kg x 10 repetições
+   Série 3: 26.0 kg x 8 repetições
+   Série 4: 26.0 kg x 7 repetições
+
+- EXERCÍCIO: Picdek (4 Séries)
+   Série 1: 70.0 kg x 10 repetições
+   Série 2: 70.0 kg x 10 repetições
+   Série 3: 70.0 kg x 10 repetições
+   Série 4: 70.0 kg x 10 repetições
+
+- EXERCÍCIO: Supino Declinado (4 Séries)
+   Série 1: 35.0 kg x 10 repetições
+   Série 2: 35.0 kg x 10 repetições
+   Série 3: 35.0 kg x 10 repetições
+   Série 4: 35.0 kg x 10 repetições
+
+- EXERCÍCIO: Françeis (4 Séries)
+   Série 1: 55.0 kg x 10 repetições
+   Série 2: 55.0 kg x 9 repetições
+   Série 3: 55.0 kg x 8 repetições
+   Série 4: 55.0 kg x 9 repetições
+
+- EXERCÍCIO: Triceps Testa (4 Séries)
+   Série 1: 42.0 kg x 12 repetições
+   Série 2: 42.0 kg x 10 repetições
+   Série 3: 42.0 kg x 10 repetições
+   Série 4: 42.0 kg x 10 repetições
+
+- EXERCÍCIO: Triceps Corda (4 Séries)
+   Série 1: 32.0 kg x 10 repetições
+   Série 2: 32.0 kg x 10 repetições
+   Série 3: 32.0 kg x 10 repetições
+   Série 4: 32.0 kg x 10 repetições
 
 ========================================
-==== PERNA REGISTRADO em |15-12-25 | 17:27:35| ====
+==== OMBRO REGISTRADO em |12:47:02 | 16-12-25| ====
 
-- EXERCÍCIO: Agachamento (4 Séries)
-  Série 1: 100.0 kg x 12 repetições
-  Série 2: 100.0 kg x 12 repetições
-  Série 3: 100.0 kg x 10 repetições
-  Série 4: 100.0 kg x 8 repetições
+- EXERCÍCIO: Unilateral (4 Séries)
+   Série 1: 20.0 kg x 10 repetições
+   Série 2: 20.0 kg x 10 repetições
+   Série 3: 18.0 kg x 10 repetições
+   Série 4: 18.0 kg x 10 repetições
 
 ========================================

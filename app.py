@@ -1,7 +1,11 @@
 import datetime
+import os 
+DIRETORIO_BASE = os.path.dirname(os.path.abspath(__file__)) 
 
+
+#Pede ao usuário o peso e as repetições para uma série específica."""
 def coletar_dados_serie(numero_serie):
-    """Pede ao usuário o peso e as repetições para uma série específica."""
+
     print(f"\n   --- Série {numero_serie} ---")
     
     # Valida o Peso
@@ -28,7 +32,7 @@ def coletar_dados_serie(numero_serie):
     return {"peso": peso, "repeticoes": repeticoes}
 
 
-#Pede o nome do exercício e o número de séries, e coleta os dados de cada série."""
+#Pede o nome do exercício e o número de séries, e coleta os dados de cada série.
 def coletar_dados_exercicio():
     
     nome_exercicio = input("\nQual EXERCÍCIO: ").strip().title()
@@ -54,11 +58,13 @@ def coletar_dados_exercicio():
         "series": series_coletadas
     }
 
-#Formata os dados do treino e salva em um arquivo TXT.
+
+# Formata os dados do treino e salva em um arquivo TXT.
 def salvar_treino(nome_treino, treino_data):
     
-    data_hora = datetime.datetime.now().strftime("|%d-%m-%y | %H:%M:%S|")
-    nome_arquivo = "caderno_de_treino/historico_treino.txt"
+    data_hora = datetime.datetime.now().strftime("|%H:%M:%S | %d-%m-%y|")
+    
+    nome_arquivo = os.path.join(DIRETORIO_BASE, "historico_treino.txt")
     
     conteudo_arquivo = f"==== {nome_treino.upper()} REGISTRADO em {data_hora} ====\n"
     
@@ -68,7 +74,7 @@ def salvar_treino(nome_treino, treino_data):
         for i, serie in enumerate(exercicio_info['series']):
             peso = serie['peso']
             reps = serie['repeticoes']
-            conteudo_arquivo += f"  Série {i + 1}: {peso:.1f} kg x {reps} repetições\n"
+            conteudo_arquivo += f"   Série {i + 1}: {peso:.1f} kg x {reps} repetições\n"
             
     conteudo_arquivo += "\n" + ("=" * 40) + "\n"
     
@@ -78,8 +84,8 @@ def salvar_treino(nome_treino, treino_data):
     print(f"\n>>> ✅ Histórico do treino salvo em '{nome_arquivo}'! <<<")
 
 def iniciar_caderno_treino():
-    """Função principal que gerencia o fluxo do treino."""
-    print("--- 🏋️‍♂️ CADERNO DE TREINO VIRTUAL INICIADO 🏋️‍♂️ ---")
+
+    print("--- 🏋️ CADERNO DE TREINO VIRTUAL INICIADO 🏋️ ---")
     
     nome_treino = input("Qual Grupo muscular você vai treino: ").strip().title()
     
@@ -100,5 +106,46 @@ def iniciar_caderno_treino():
     else:
         print("Nenhum exercício registrado. Treino encerrado.")
 
+
+# Mostra o histórico de treinos salvos.
+def ver_historico():
+    
+    nome_arquivo = os.path.join(DIRETORIO_BASE, "historico_treino.txt")
+    
+    try:
+        with open(nome_arquivo, 'r', encoding='utf-8') as arquivo:
+            conteudo = arquivo.read()
+            
+            if conteudo:
+                print("\n" + "="*50)
+                print("📋 HISTÓRICO DE TREINOS")
+                print("="*50)
+                print(conteudo)
+            else:
+                print("\n⚠️  Nenhum treino registrado ainda.")
+                
+    except FileNotFoundError:
+        print("\n⚠️  Arquivo de histórico não encontrado. Faça seu primeiro treino!")
+
+
 if __name__ == "__main__":
-    iniciar_caderno_treino()
+    while True:
+        print("\n" + "="*50)
+        print("   🏋️ CADERNO DE TREINO 🏋️    ")
+        print("="*50)
+        print("1. Registrar novo treino")
+        print("2. Ver histórico")
+        print("3. Sair")
+        print("="*50)
+        
+        escolha = input("\nEscolha uma opção: ").strip()
+        
+        if escolha == "1":
+            iniciar_caderno_treino()
+        elif escolha == "2":
+            ver_historico()
+        elif escolha == "3":
+            print("\n👋 Até a próxima! Bons treinos!")
+            break 
+        else:
+            print("\n❌ Opção inválida. Tente novamente.")
